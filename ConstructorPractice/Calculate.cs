@@ -16,11 +16,20 @@ namespace ConstructorPractice
         }
         public Calculate(T a) :this()
         {
-            this.a = Convert.ToDouble(a);
+            if (!double.TryParse(a.ToString(), out this.a))
+            {
+                Console.WriteLine("Wrong constructor input. Now set to default.");
+                this.a = 0;
+            }
         }
+
         public Calculate(T a, T b) : this(a)
         {
-            this.b = Convert.ToDouble(b);
+            if (!double.TryParse(b.ToString(), out this.b))
+            {
+                Console.WriteLine("Wrong constructor input. Now set to default.");
+                this.b = 0;
+            }
         }
 
 
@@ -28,14 +37,22 @@ namespace ConstructorPractice
         
         public void SetA(T a)
         {
-            this.a = Convert.ToDouble(a);
+            if (!double.TryParse(a.ToString(), out this.a))
+            {
+                Console.WriteLine("Wrong input. Now set to default.");
+                this.a = 0;
+            }
         }
 
         public double GetB() => b;
         
         public void SetB(T b) 
         {
-            this.b = Convert.ToDouble(b);    
+            if (!double.TryParse(b.ToString(), out this.b))
+            {
+                Console.WriteLine("Wrong input. Now set to default.");
+                this.b = 0;
+            }
         }
 
         public double Add() => a + b;
